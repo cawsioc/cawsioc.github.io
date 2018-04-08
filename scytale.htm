@@ -1,0 +1,141 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="scytale.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>proto.woolfox.net</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>Scytale Transposition Cipher</h2>
+			</div>
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<h3>Encryption</h3>
+				</div>		
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="txboxin" class="w3-input" type="text" placeholder="String to encrypt">
+					</div>
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="es" id="es">
+						 	<option value="" disabled selected>Number of sides</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>							
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>						
+						</select>
+					</div>
+				</form>
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="encrypt()">Encrypt
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="txboxout" class="w3-input" type="text" placeholder="Cipher-text">
+					</div>
+				</form>				
+				<br><br>
+			</div>
+
+			<div>
+				<div class="w3-container">
+					<h3>Decryption</h3>
+				</div>		
+				<form class="w3-container" method="post" id="decryptForm">
+					<div class="w3-container w3-full">
+						<input id="rxboxin" class="w3-input" type="text" placeholder="String to decrypt">
+					</div>
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="ds" id="ds">
+						 	<option value="" disabled selected>Number of sides</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>							
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>						
+						</select>
+					</div>
+				</form>
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="decrypt()">Decrypt
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="rxboxout" class="w3-input" type="text" placeholder="Plain-text">
+					</div>
+				</form>				
+				<br>
+			</div>
+
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>
+					A <a target="_blank" href="https://en.wikipedia.org/wiki/Scytale">Scytale</a> provides a simple means to transpose the letters of a plain-text message. A leather strap or similar medium is wound around the Scytale by the sender, and then the message is written out along the each side.<br><br>
+					For example, the message "The Scytale was used in Ancient Greece" written on an 8-sided Scytale would look like this:
+					<br><br>
+	    			<font class="w3-code-font">T H E S
+	    			<br>
+					C Y T A
+					<br>
+					L E W A
+					<br>
+					S U S E
+					<br>
+					D I N A
+					<br>
+					N C I E
+					<br>
+					N T G R
+					<br>
+					E E C E</font>
+					<br><br>
+	    			When the strap is unwound, the plain-text characters are tranposed into one long column of characters like this:
+	    			<font class="w3-code-font">TCLSDNNEHYEUICTEETWSNIGCSAAEAERE</font>
+	    			<br><br>
+	    			To recover the original message, the receiver wraps the strap around a Scytale of the same dimensions and size as the one used to write the message, and reads the plain-text off each side in turn.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

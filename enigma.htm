@@ -1,0 +1,255 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="enigma.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>proto.woolfox.net</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>Enigma Machine</h2>
+			</div>
+
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<h3>Encryption and Decryption</h3>
+				</div>		
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="txboxin" class="w3-input" type="text" placeholder="String to process">
+					</div>
+					<div class="w3-panel">
+						<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="commit()">Commit Input
+						</button>
+					</div>			
+					<div class="w3-container w3-full">
+						<input id="txInputQueue" class="w3-input" type="text" placeholder="Processing queue">
+					</div>
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="txWheelSet" id="txWheelSet">
+						 	<option value="" disabled selected>Wheel set and order</option>
+							<option value="123">1 2 3</option>
+							<option value="124">1 2 4</option>
+							<option value="125">1 2 5</option>
+							<option value="134">1 3 4</option>
+							<option value="135">1 3 5</option>
+							<option value="145">1 4 5</option>
+							<option value="132">1 3 2</option>
+							<option value="142">1 4 2</option>
+							<option value="152">1 5 2</option>
+							<option value="143">1 4 3</option>
+							<option value="153">1 5 3</option>
+							<option value="154">1 5 4</option>
+							<option value="213">2 1 3</option>
+							<option value="214">2 1 4</option>
+							<option value="215">2 1 5</option>
+							<option value="234">2 3 4</option>
+							<option value="235">2 3 5</option>
+							<option value="245">2 4 5</option>
+							<option value="231">2 3 1</option>
+							<option value="241">2 4 1</option>
+							<option value="251">2 5 1</option>
+							<option value="243">2 4 3</option>
+							<option value="253">2 5 3</option>
+							<option value="254">2 5 4</option>							
+							<option value="312">3 1 2</option>
+							<option value="314">3 1 4</option>
+							<option value="315">3 1 5</option>
+							<option value="324">3 2 4</option>
+							<option value="325">3 2 5</option>
+							<option value="345">3 4 5</option>
+							<option value="321">3 2 1</option>
+							<option value="341">3 4 1</option>
+							<option value="351">3 5 1</option>
+							<option value="342">3 4 2</option>
+							<option value="352">3 5 2</option>
+							<option value="354">3 5 4</option>							
+							<option value="412">4 1 2</option>
+							<option value="413">4 1 3</option>
+							<option value="415">4 1 5</option>
+							<option value="423">4 2 3</option>
+							<option value="425">4 2 5</option>
+							<option value="435">4 3 5</option>
+							<option value="421">4 2 1</option>
+							<option value="431">4 3 1</option>
+							<option value="451">4 5 1</option>
+							<option value="432">4 3 2</option>
+							<option value="452">4 5 2</option>
+							<option value="453">4 5 3</option>
+							<option value="512">5 1 2</option>
+							<option value="513">5 1 3</option>
+							<option value="514">5 1 4</option>
+							<option value="523">5 2 3</option>
+							<option value="524">5 2 4</option>
+							<option value="534">5 3 4</option>
+							<option value="521">5 2 1</option>
+							<option value="531">5 3 1</option>
+							<option value="541">5 4 1</option>
+							<option value="532">5 3 2</option>
+							<option value="542">5 4 2</option>
+							<option value="543">5 4 3</option>		
+						</select>
+					</div>
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="r1" id="r1">
+						 	<option value="" disabled selected>Left-hand wheel rotation</option>
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+						</select>	
+					</div>
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="r2" id="r2">
+						 	<option value="" disabled selected>Middle wheel rotation</option>
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+						</select>	
+					</div>
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="r3" id="r3">
+						 	<option value="" disabled selected>Right-hand wheel rotation</option>
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+						</select>	
+					</div>
+
+					<div class="w3-container w3-quarter">					
+						<select class="w3-select w3-text-grey" name="speed" id="speed">
+						 	<option value="" disabled selected>Machine speed</option>
+							<option value="slow">slow</option>
+							<option value="fast">fast</option>
+						</select>
+					</div>
+				</form>		
+				<div class="w3-container">
+					<div class="w3-panel">
+						<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="encryptdecrypt()">Encrypt / Decrypt
+						</button>
+					</div>
+				</div>
+				<div class="w3-container">
+					<div class="w3-container w3-quarter">
+						<input id="txWheel3" class="w3-input" type="text" placeholder="">
+					</div>								
+					<div class="w3-container w3-quarter">				
+						<p id="w3">Wheel _</p>
+					</div>
+				</div>
+				<div class="w3-container">
+					<div class="w3-container w3-quarter">
+						<input id="txWheel2" class="w3-input" type="text" placeholder="">
+					</div>								
+					<div class="w3-container w3-quarter">				
+						<p id="w2">Wheel _</p>
+					</div>
+				</div>
+				<div class="w3-container">
+					<div class="w3-container w3-quarter">
+						<input id="txWheel1" class="w3-input" type="text" placeholder="">
+					</div>								
+					<div class="w3-container w3-quarter">				
+						<p id="w1">Wheel _</p>
+					</div>
+				</div>
+				<div class="w3-container">
+					<div class="w3-container w3-quarter">
+						<input id="reflector" class="w3-input" type="text" placeholder="">
+					</div>								
+					<div class="w3-container w3-quarter">				
+						<p id="reflector">Reflector</p>
+					</div>
+				</div>										
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="txOutputQueue" class="w3-input" type="text" placeholder="Output">
+					</div>
+				</form>
+				<br>
+			</div>
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>
+					This page implements an Enigma style cipher, i.e. one using the same principles as an early <a href="http://en.wikipedia.org/wiki/Enigma_machine" target="_blank">Enigma machine</a>, but without a plugboard or wheel notching (a parent wheel rotates only after the child wheel has completed a full rotation). The Enigma machine automates the encryption and decryption of each individual plaintext character with a different substition cipher alphabet, where the ciphertext alphabets only repeat after all wheels have rotated back to their original positions (and therefore implements a polyalphabetic substitution cipher). The set of wheels (3 from an available 5 in this case (where each of the 5 implements a substitution alphabet from the 7,905,853,580,625 possible variations that can be obtained by wiring any of the 26 wheel inputs to any of the 26 wheel outputs (except itself))) and their order can be considered the key, with successive messages on the same machine requiring a different initial set of rotations of the wheels already in place for effective security.
+	    		</p>
+			</div>
+		</div>
+	</body>
+</html>

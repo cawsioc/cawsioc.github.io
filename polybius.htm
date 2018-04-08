@@ -1,0 +1,107 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="polybius.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>proto.woolfox.net</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>Polybius Square Cipher</h2>
+			</div>
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<h3>Encryption</h3>
+				</div>	
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="txboxin" class="w3-input" type="text" placeholder="String to encrypt">
+					</div>
+				</form>
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="ek" class="w3-input" type="text" placeholder="Key word or phrase">
+					</div>
+				</form>				
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="encrypt()">Encrypt
+					</button>
+				</div>
+				<div class="w3-container">
+					<div class="w3-container w3-quarter">
+						<div class="w3-panel w3-light-grey w3-center">
+							<font class="w3-code-font">
+							<p id="epsqr1">Generated Polybius square</p>
+							<p id="epsqr2"></p>
+							<p id="epsqr3"></p>
+							<p id="epsqr4"></p>
+							<p id="epsqr5"></p>
+							</font>
+						</div>
+					</div>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="txboxout" class="w3-input" type="text" placeholder="Cipher-text">
+					</div>
+				</form>
+				<br><br>
+			</div>
+
+			<div>
+				<div class="w3-container">
+					<h3>Decryption</h3>
+				</div>	
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="rxboxin" class="w3-input" type="text" placeholder="String to decrypt">
+					</div>
+				</form>
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="dk" class="w3-input" type="text" placeholder="Key word or phrase">
+					</div>
+				</form>				
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="decrypt()">Decrypt
+					</button>
+				</div>
+				<div class="w3-container">
+					<div class="w3-container w3-quarter">
+						<div class="w3-panel w3-light-grey w3-center">
+							<font class="w3-code-font">
+							<p id="dpsqr1">Generated Polybius square</p>
+							<p id="dpsqr2"></p>
+							<p id="dpsqr3"></p>
+							<p id="dpsqr4"></p>
+							<p id="dpsqr5"></p>
+							</font>
+						</div>
+					</div>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="rxboxout" class="w3-input" type="text" placeholder="Cipher-text">
+					</div>
+				</form>
+				<br>
+			</div>
+
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>
+					A Polybius Square arranges a keyword or phrase as the start of the ciphertext alphabet and appends any characters that didn't occur in the keyword on to the end of that alphabet exactly as a standard keyword cipher does. However, the letters "i" and "j" are then collapsed into the same symbol ("i" in this case), to produce a ciphertext alphabet of 25 characters, which is then placed in a 5 x 5 grid. To encrypt, the position of the plaintext character in the 5 x 5 grid is used to obtain a column number and row number. The character is then represented by the resulting 2-digit pair. To decrypt, the receiver constructs the grid with the same keyword, and reads off the plaintext character at the location indicated by the column and row elements of each pair of digits in the ciphertext. The fact that only a pair of small values is needed to represent each letter lends itself to disguising or representing them in a wide variety of ways.<br>
+					<br>
+					Whilst the Polybius Square can be used as a cipher (<a href="https://en.wikipedia.org/wiki/Polybius_square" target="_blank">although this was not it's original purpose</a>) it is vulnerable to frequency analysis in the same way as all other monoalphabetic substitution ciphers.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

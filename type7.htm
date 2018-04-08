@@ -1,0 +1,86 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="type7.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>proto.woolfox.net</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>Type 7 Obfuscation</h2>
+			</div>
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<h3>Encode</h3>
+				</div>	
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="txboxin" class="w3-input" type="text" placeholder="String to encode">
+					</div>
+					<div class="w3-container w3-quarter">
+						<input id="ek1" class="w3-input" type="text" placeholder="Seed value">
+					</div>
+				</form>
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="encode()">Encode
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="txboxout" class="w3-input" type="text" placeholder="Encoded output">
+					</div>
+				</form>
+				<br><br>
+			</div>
+			<div>
+				<div class="w3-container">
+					<h3>Decode</h3>
+				</div>	
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="rxboxin" class="w3-input" type="text" placeholder="String to decode">
+					</div>
+				</form>
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="decode()">Decode
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="rxboxout" class="w3-input" type="text" placeholder="Decoded output">
+					</div>
+				</form>
+				<br><br>
+			</div>
+
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>
+					The type 7 obfuscation process is designed to hide sensitive data in a plaintext message from casual observers and is not intended as a cipher in the true sense. It has no concept of a key, instead relying on the observer not knowing the algorithm that has been used for obfuscation. To obfuscate a plaintext message it uses a seed value as an index into a 53 character string indexed from 0 to 52 to provide a UTF-8 byte value, and bitwise XORs this against the UTF-8 byte value of the first character in the plaintext, outputting a 2-digit hex value as the ciphertext. The index into the 53 character string is incremented for each subsequent plaintext character, the final step after exhausting the input being to prepend the 2-digit decimal result of the seed modulo 53.
+					<br><br>
+					For example, the plaintext "0bFusc4te" with a seed of 5 would encode as follows:
+					<br><br>
+					<font class="w3-code-font">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;seed = &nbsp;&nbsp;05 > output = 05<br>
+					(plaintext "0" = UTF-8 0x30) XOR (string position 05 = "k" = UTF-8 0x6B) = 0x5B > output = 055B<br>
+					(plaintext "b" = UTF-8 0x62) XOR (string position 06 = "f" = UTF-8 0x66) = 0x04 > output = 055B04<br>
+					(plaintext "F" = UTF-8 0x46) XOR (string position 07 = "o" = UTF-8 0x6F) = 0x29 > output = 055B0429<br>
+					(plaintext "u" = UTF-8 0x75) XOR (string position 08 = "A" = UTF-8 0x41) = 0x34 > output = 055B042934<br>
+					(plaintext "s" = UTF-8 0x73) XOR (string position 09 = "," = UTF-8 0x2C) = 0x5F > output = 055B0429345F<br>
+					(plaintext "c" = UTF-8 0x63) XOR (string position 10 = "." = UTF-8 0x2E) = 0x4D > output = 055B0429345F4D<br>
+					(plaintext "4" = UTF-8 0x34) XOR (string position 11 = "i" = UTF-8 0x69) = 0x5D > output = 055B0429345F4D5D<br>
+					(plaintext "t" = UTF-8 0x74) XOR (string position 12 = "y" = UTF-8 0x79) = 0x0D > output = 055B0429345F4D5D0D<br>
+					(plaintext "e" = UTF-8 0x65) XOR (string position 13 = "e" = UTF-8 0x65) = 0x00 > output = 055B0429345F4D5D0D00</font>
+					<br><br>
+					De-obfuscation reverses the process, using the first two characters of the ciphertext as the seed value, and then bitwise XOR-ing subsequent hex pairs with the hex value of the 53 character string in the seed value's position (incremented each time).
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

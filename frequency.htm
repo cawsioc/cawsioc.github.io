@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="frequency.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>proto.woolfox.net</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>Frequency Analyzer</h2>
+			</div>
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<h3>Analyze</h3>
+				</div>	
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="txboxin" class="w3-input" type="text" placeholder="Input to analyze">
+					</div>
+				</form>
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="analyze()">Analyze
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="gram1" class="w3-input" type="text" placeholder="Individual frequencies">
+					</div>
+				</form>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="gramP" class="w3-input" type="text" placeholder="Double frequencies">
+					</div>
+				</form>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="gram2" class="w3-input" type="text" placeholder="Bigram frequencies">
+					</div>
+				</form>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="gram3" class="w3-input" type="text" placeholder="Trigram frequencies">
+					</div>
+				</form>												
+				<br>
+			</div>
+
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>
+					Analyzing the frequency of, and relationship between characters in a ciphertext can provide clues as to their possible plaintext identities, particularly when the ciphertext is the product of a transposition or monoalphabetic substitution cipher. The greater the volume of ciphertext (encrypted with the same key), the more likely it is that the relative frequency of characters in whichever language the ciphertext is written show their true distribution. For example in the page with the most text on this site, the percentage frequency of each character is:
+					<br><br>
+					<font class="w3-code-font">
+					Char: &nbsp;e &nbsp;&nbsp;&nbsp;&nbsp;t &nbsp;&nbsp;&nbsp;o &nbsp;&nbsp;&nbsp;a &nbsp;&nbsp;&nbsp;i &nbsp;&nbsp;&nbsp;n &nbsp;&nbsp;&nbsp;s &nbsp;&nbsp;&nbsp;r &nbsp;&nbsp;&nbsp;h &nbsp;&nbsp;&nbsp;l &nbsp;&nbsp;&nbsp;d &nbsp;&nbsp;&nbsp;c &nbsp;&nbsp;&nbsp;u &nbsp;&nbsp;&nbsp;f &nbsp;&nbsp;&nbsp;g &nbsp;&nbsp;&nbsp;p &nbsp;&nbsp;&nbsp;b &nbsp;&nbsp;&nbsp;m &nbsp;&nbsp;&nbsp;y &nbsp;&nbsp;&nbsp;w &nbsp;&nbsp;&nbsp;k &nbsp;&nbsp;&nbsp;vxjqz
+					<br>
+					Freq: &nbsp;12.8 &nbsp;9.2 &nbsp;7.7 &nbsp;7.5 &nbsp;7.2 &nbsp;7.1 &nbsp;7.1 &nbsp;5.6 &nbsp;5.6 &nbsp;4.7 &nbsp;3.7 &nbsp;3.0 &nbsp;2.7 &nbsp;2.6 &nbsp;2.4 &nbsp;2.2 &nbsp;2.0 &nbsp;2.0 &nbsp;1.4 &nbsp;1.3 &nbsp;1.0 &nbsp;&lt; 1.0
+					<br><br>
+					</font>
+					which is close to the <a href="https://en.wikipedia.org/wiki/Letter_frequency" target="_blank">average results</a> for the English language.
+					<br><br>
+					Similarly, analysis of the frequency of series of adjacent characters e.g. bigrams and trigrams can complement single character frequency data to further focus in on the likely identity of a ciphertext character. For example the relative occurence of <a href="https://en.wikipedia.org/wiki/Bigram" target="_blank">bigrams</a> and <a href="https://en.wikipedia.org/wiki/Trigram" target="_blank">trigrams</a> in the same text is:
+					<br><br>
+					<font class="w3-code-font">
+					Bigrams : &nbsp;he, th, in, er, es, an, to, st, on, nd, le, re, is, nt, ng, at, en, or, ea, ti, te, ha, sa
+					<br>
+					Doubles : &nbsp;ll, tt, ee, ss, ff, oo, rr, pp, mm, nn, dd, gg, cc, hh, bb, yy, ww, aa, zz
+					<br>
+					Trigrams: &nbsp;the, ing, and, her, isa, est, ell, ent, ter, sth, sab, lle, bel, abe, int, for, ion, hes 
+					<br><br>
+					</font>
+					When using the results of frequency analysis to aid in attempts to break a cipher it must be remembered that spaces are unlikely to be present in the ciphertext (as starting letters, common word lengths, word frequency, and sentence structure all greatly reduce the difficulty of breaking the cipher), so it is likely that n-grams will span different words. The nature of the plaintext will also affect the usefulness of the frequency analysis results, e.g. it may contain an unusual word repeated many times or could be something other than continuous prose, e.g. a list.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

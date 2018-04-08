@@ -1,0 +1,99 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="keyword.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>proto.woolfox.net</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>Keyword Substitution Cipher</h2>
+			</div>
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<h3>Encryption</h3>
+				</div>		
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="txboxin" class="w3-input" type="text" placeholder="String to encrypt">
+					</div>
+				</form>
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="ek" class="w3-input" type="text" placeholder="Key word or phrase">
+					</div>
+				</form>				
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="encrypt()">Encrypt
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-quarter">
+						<input id="pta" class="w3-input w3-border w3-light-grey w3-code-font" type="text" placeholder="Plain-text alphabet">
+					</div>
+				</form>		
+				<form class="w3-container">
+					<div class="w3-container w3-quarter">
+						<input id="cta" class="w3-input w3-border w3-light-grey w3-code-font" type="text" placeholder="Cipher-text alphabet">
+					</div>
+				</form>							
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="txboxout" class="w3-input" type="text" placeholder="Cipher-text">
+					</div>
+				</form>
+				<br><br>
+			</div>
+
+			<div>
+				<div class="w3-container">
+					<h3>Decryption</h3>
+				</div>		
+				<form class="w3-container" method="post" id="decryptForm">
+					<div class="w3-container w3-full">
+						<input id="rxboxin" class="w3-input" type="text" placeholder="String to decrypt">
+					</div>
+				</form>
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="dk" class="w3-input" type="text" placeholder="Key word or phrase">
+					</div>
+				</form>				
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="decrypt()">Decrypt
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-quarter">
+						<input id="dcta" class="w3-input w3-border w3-light-grey w3-code-font" type="text" placeholder="Cipher-text alphabet">
+					</div>
+				</form>		
+				<form class="w3-container">
+					<div class="w3-container w3-quarter">
+						<input id="dpta" class="w3-input w3-border w3-light-grey w3-code-font" type="text" placeholder="Plain-text alphabet">
+					</div>
+				</form>							
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="rxboxout" class="w3-input" type="text" placeholder="Plain-text">
+					</div>
+				</form>
+				<br>
+			</div>
+
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>
+					The Keyword Substitution Cipher uses the letters from a keyword or phrase as the start of a cipher-text alphabet, and then appends any characters that didn't occur in the keyword on to the end of that alphabet to give the full character set required for substitution. To encrypt, the position of the plain-text character in the plain-text alphabet is used to get the corresponding cipher-text character from the ciphe-rtext alphabet. To decrypt, the receiver constructs the cipher-text alphabet as above and finds the the plain-text character with position corresponding to that of the cipher-text character in the cipher-text alphabet. The ciphertext alphabet construction method potentially provides 26! (403,291,461,126,605,635,584,000,000) different possibilities, but using real words or phrases that contain only a subset of the full alphabet's letters as the key removes a huge number of these as candidate cipher-text alphabets. Frequency analysis is a useful tool when attempting to break this cipher.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

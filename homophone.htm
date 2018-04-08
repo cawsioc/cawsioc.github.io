@@ -1,0 +1,219 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="homophone.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>proto.woolfox.net</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>Homophone Substitution Cipher</h2>
+			</div>
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<h3>Encryption</h3>
+				</div>	
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="txboxin" class="w3-input" type="text" placeholder="String to encrypt">
+					</div>
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="es1" id="es1">
+						 	<option value="" disabled selected>Transposition value 1</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>							
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>						
+						</select>
+					</div>
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="es2" id="es2">
+						 	<option value="" disabled selected>Transposition value 2</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>							
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>						
+						</select>
+					</div>	
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="es3" id="es3">
+						 	<option value="" disabled selected>Transposition value 3</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>							
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>						
+						</select>
+					</div>									
+				</form>
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="encrypt()">Encrypt
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="txboxout" class="w3-input" type="text" placeholder="Cipher-text">
+					</div>
+				</form>
+				<br><br>
+			</div>
+
+			<div>
+				<div class="w3-container">
+					<h3>Decryption</h3>
+				</div>	
+				<form class="w3-container" method="post" id="decryptForm">
+					<div class="w3-container w3-full">
+						<input id="rxboxin" class="w3-input" type="text" placeholder="String to decrypt">
+					</div>
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="ds1" id="ds1">
+						 	<option value="" disabled selected>Transposition value 1</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>							
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>						
+						</select>
+					</div>
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="ds2" id="ds2">
+						 	<option value="" disabled selected>Transposition value 2</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>							
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>						
+						</select>
+					</div>	
+					<div class="w3-container w3-quarter">
+						<select class="w3-select w3-text-grey" name="ds3" id="ds3">
+						 	<option value="" disabled selected>Transposition value 3</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>							
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>						
+						</select>
+					</div>									
+				</form>
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="decrypt()">Decrypt
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="rxboxout" class="w3-input" type="text" placeholder="Plain-text">
+					</div>
+				</form>
+				<br><br>
+			</div>		
+
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>
+					Transposition and substitution ciphers such as the; (<a href="scytale.htm">Scytale</a>, <a href="caesarshift.htm">Caesar Shift</a>, and <a href="keyword.htm">Keyword</a>) use simple 1:1 character mapping (monoalphabetic) to produce a ciphertext and are therefore vulnerable to frequency analysis. Homophones can be used to disguise the occurence of frequently occuring letters and their patterns in language by using several values to represent one plaintext character. This example uses a ciphertext alphabet containing 100 values (00 to 99) to represent plaintext characters, i.e. one that contains 74 homophones. To encrypt, the position of the plaintext character in the plaintext alphabet is used to get a ciphertext character from the ciphertext alphabet in the same position, but, crucially, the ciphertext alphabet has a number of variants for that character, and these are cycled through as they used. To decrypt, the receiver reverses the process. Three separate Scytale transpositions mix the 100 ciphertext characters and thus disguise their plaintext order. The cipher is resistant to frequency analysis but still vulnerable to analysis of letter relationships and their patterns (and of course the fact that the number of homophones used for each letter and the mixing method are known).
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

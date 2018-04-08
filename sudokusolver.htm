@@ -1,0 +1,459 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="sudokusolver.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>Sudoku Solver</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>Sudoku Solver</h2>
+			</div>
+
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<p>
+						Fill in the grid with all known values:
+					</p>					
+				</div>
+
+
+
+			<form class="w3-container" method="post" id="entryform">
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row" style="height:39px">
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i0" maxlength="1" id="i0">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i1" maxlength="1" id="i1">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i2" maxlength="1" id="i2">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i3" maxlength="1" id="i3">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i4" maxlength="1" id="i4">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i5" maxlength="1" id="i5">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i6" maxlength="1" id="i6">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i7" maxlength="1" id="i7">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i8" maxlength="1" id="i8">
+						</div>
+					</div>
+				</div>
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row"  style="height:39px">
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i9" maxlength="1" id="i9">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i10" maxlength="1" id="i10">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i11" maxlength="1" id="i11">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i12" maxlength="1" id="i12">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i13" maxlength="1" id="i13">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i14" maxlength="1" id="i14">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i15" maxlength="1" id="i15">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i16" maxlength="1" id="i16">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i17" maxlength="1" id="i17">
+						</div>
+					</div>
+				</div>
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row"  style="height:39px">
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i18" maxlength="1" id="i18">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i19" maxlength="1" id="i19">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i20" maxlength="1" id="i20">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i21" maxlength="1" id="i21">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i22" maxlength="1" id="i22">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i23" maxlength="1" id="i23">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i24" maxlength="1" id="i24">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i25" maxlength="1" id="i25">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i26" maxlength="1" id="i26">
+						</div>
+					</div>
+				</div>
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row"  style="height:39px">
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i27" maxlength="1" id="i27">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i28" maxlength="1" id="i28">
+						</div>																
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i29" maxlength="1" id="i29">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i30" maxlength="1" id="i30">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i31" maxlength="1" id="i31">
+						</div>																
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i32" maxlength="1" id="i32">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i33" maxlength="1" id="i33">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i34" maxlength="1" id="i34">
+						</div>																
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i35" maxlength="1" id="i35">
+						</div>
+					</div>
+				</div>
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row"  style="height:39px">
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i36" maxlength="1" id="i36">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i37" maxlength="1" id="i37">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i38" maxlength="1" id="i38">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i39" maxlength="1" id="i39">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i40" maxlength="1" id="i40">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i41" maxlength="1" id="i41">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i42" maxlength="1" id="i42">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i43" maxlength="1" id="i43">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i44" maxlength="1" id="i44">
+						</div>
+					</div>
+				</div>	
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row"  style="height:39px">
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i45" maxlength="1" id="i45">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i46" maxlength="1" id="i46">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i47" maxlength="1" id="i47">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i48" maxlength="1" id="i48">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i49" maxlength="1" id="i49">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i50" maxlength="1" id="i50">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i51" maxlength="1" id="i51">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i52" maxlength="1" id="i52">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i53" maxlength="1" id="i53">
+						</div>
+					</div>
+				</div>																	
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row"  style="height:39px">
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i54" maxlength="1" id="i54">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i55" maxlength="1" id="i55">
+						</div>																
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i56" maxlength="1" id="i56">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i57" maxlength="1" id="i57">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i58" maxlength="1" id="i58">
+						</div>																
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i59" maxlength="1" id="i59">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i60" maxlength="1" id="i60">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i61" maxlength="1" id="i61">
+						</div>																
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i62" maxlength="1" id="i62">
+						</div>
+					</div>
+				</div>
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row"  style="height:39px">
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i63" maxlength="1" id="i63">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i64" maxlength="1" id="i64">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i65" maxlength="1" id="i65">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i66" maxlength="1" id="i66">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i67" maxlength="1" id="i67">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i68" maxlength="1" id="i68">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i69" maxlength="1" id="i69">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i70" maxlength="1" id="i70">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i71" maxlength="1" id="i71">
+						</div>
+					</div>
+				</div>	
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row"  style="height:39px">
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i72" maxlength="1" id="i72">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i73" maxlength="1" id="i73">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i74" maxlength="1" id="i74">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i75" maxlength="1" id="i75">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i76" maxlength="1" id="i76">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i77" maxlength="1" id="i77">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i78" maxlength="1" id="i78">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i79" maxlength="1" id="i79">
+						</div>
+						<div class="w3-col s1">
+							<input class="w3-center" style="width:27px" type="text" name="i80" maxlength="1" id="i80">
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<div class="w3-panel">
+				<button class="w3-btn w3-dark-grey" id="sudokubutton" type="button" onclick="giveClue()">Solve one cell</button>
+				<button class="w3-btn w3-dark-grey" id="sudokubutton" type="button" onclick="solveIt()">Solve all cells</button>
+			</div>
+
+			<div class="w3-container">
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row">
+						<div class="w3-col s1 w3-center " style="width:24px" id="o0">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o1">_</div>							
+						<div class="w3-col s1 w3-center " style="width:24px" id="o2">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o3">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o4">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o5">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o6">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o7">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o8">_</div>
+					</div>
+				</div>
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row">
+						<div class="w3-col s1 w3-center " style="width:24px" id="o9">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o10">_</div>							
+						<div class="w3-col s1 w3-center " style="width:24px" id="o11">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o12">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o13">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o14">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o15">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o16">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o17">_</div>
+					</div>
+				</div>
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row">
+						<div class="w3-col s1 w3-center " style="width:24px" id="o18">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o19">_</div>							
+						<div class="w3-col s1 w3-center " style="width:24px" id="o20">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o21">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o22">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o23">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o24">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o25">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o26">_</div>
+					</div>
+				</div>
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row">
+						<div class="w3-col s1 w3-center " style="width:24px" id="o27">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o28">_</div>							
+						<div class="w3-col s1 w3-center " style="width:24px" id="o29">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o30">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o31">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o32">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o33">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o34">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o35">_</div>
+					</div>
+				</div>					
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row">
+						<div class="w3-col s1 w3-center " style="width:24px" id="o36">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o37">_</div>							
+						<div class="w3-col s1 w3-center " style="width:24px" id="o38">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o39">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o40">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o41">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o42">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o43">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o44">_</div>
+					</div>
+				</div>
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row">
+						<div class="w3-col s1 w3-center " style="width:24px" id="o45">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o46">_</div>							
+						<div class="w3-col s1 w3-center " style="width:24px" id="o47">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o48">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o49">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o50">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o51">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o52">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o53">_</div>
+					</div>
+				</div>				
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row">
+						<div class="w3-col s1 w3-center " style="width:24px" id="o54">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o55">_</div>							
+						<div class="w3-col s1 w3-center " style="width:24px" id="o56">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o57">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o58">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o59">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o60">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o61">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o62">_</div>
+					</div>
+				</div>
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row">
+						<div class="w3-col s1 w3-center " style="width:24px" id="o63">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o64">_</div>							
+						<div class="w3-col s1 w3-center " style="width:24px" id="o65">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o66">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o67">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o68">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o69">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o70">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o71">_</div>
+					</div>
+				</div>	
+				<div class="w3-container" style="width:500px">
+					<div class="w3-row">
+						<div class="w3-col s1 w3-center " style="width:24px" id="o72">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o73">_</div>							
+						<div class="w3-col s1 w3-center " style="width:24px" id="o74">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o75">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o76">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o77">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o78">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o79">_</div>
+						<div class="w3-col s1 w3-center " style="width:24px" id="o80">_</div>
+					</div>
+				</div>
+			</div>
+			<br>
+
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>
+					This program <i>should</i> solve all "solvable" Sudoku puzzles, by which I mean those that do not require guesswork to complete but instead rely only on logic.
+					<br><br>
+					It uses five solving functions to work its way through a puzzle. The functions eliminate possible values in each square until there is only one left. The solving functions are:
+				</p>
+				<ol>
+					<li>Does any square have only 1 possible value remaining?<br>
+					If so, that square must be that value.
+					<li>Does any square contain the last instance of a value in it's row, column or supercell (a supercell is 1 of the 9 larger 3 x 3 squares that makes up the overall 9 x 9 grid)?<br>
+					If so, that square must be that value.
+					<li>Do x values only occur together x times in a row, column or supercell ?<br>
+					If so, then those x values cannot occur outside of those cells in the related row, column or supercell squares.
+					<li>Do any unsolved squares in a supercell contain a value in the same row or column?<br>
+					If so, that row or column can be extended into other unsolved supercells and the value removed from them.
+					<li>Within two of the three cells in a supercell row or column, do the patterns of values occurring in those two supercells' sub-rows or sub-columns, limit where that value can occur in the third supercell?<br>
+					If so, remove that value from the appropriate sub-row or column in the third supercell.
+				</ol>
+			</div>
+		</div>
+	</body>
+</html>

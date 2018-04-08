@@ -1,0 +1,147 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="playfair.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>proto.woolfox.net</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>Playfair Cipher</h2>
+			</div>
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<h3>Encryption</h3>
+				</div>	
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="txboxin" class="w3-input" type="text" placeholder="String to encrypt">
+					</div>
+				</form>
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="ek" class="w3-input" type="text" placeholder="Key word or phrase">
+					</div>
+				</form>				
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="encrypt()">Encrypt
+					</button>
+				</div>
+				<div class="w3-container">
+					<div class="w3-container w3-quarter">
+						<div class="w3-panel w3-light-grey w3-center">
+							<font class="w3-code-font">
+							<p id="epsqr1">Generated Polybius square</p>
+							<p id="epsqr2"></p>
+							<p id="epsqr3"></p>
+							<p id="epsqr4"></p>
+							<p id="epsqr5"></p>
+							</font>
+						</div>
+					</div>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="txboxout" class="w3-input" type="text" placeholder="Cipher-text">
+					</div>
+				</form>
+				<br><br>
+			</div>
+
+			<div>
+				<div class="w3-container">
+					<h3>Decryption</h3>
+				</div>	
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="rxboxin" class="w3-input" type="text" placeholder="String to decrypt">
+					</div>
+				</form>
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="dk" class="w3-input" type="text" placeholder="Key word or phrase">
+					</div>
+				</form>				
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="decrypt()">Decrypt
+					</button>
+				</div>
+				<div class="w3-container">
+					<div class="w3-container w3-quarter">
+						<div class="w3-panel w3-light-grey w3-center">
+							<font class="w3-code-font">
+							<p id="dpsqr1">Generated Polybius square</p>
+							<p id="dpsqr2"></p>
+							<p id="dpsqr3"></p>
+							<p id="dpsqr4"></p>
+							<p id="dpsqr5"></p>
+							</font>
+						</div>
+					</div>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="rxboxout" class="w3-input" type="text" placeholder="Cipher-text">
+					</div>
+				</form>
+				<br>
+			</div>
+
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>
+					The Playfair cipher creates a ciphertext using pairs of letters (digraphs) that encode plaintext characters. If the letters in a plaintext digraph are the same, another pre-selected letter is inserted between them. If there are an uneven number of letters in the plaintext after this, the pre-selected letter is added to the end to produce an even length message. The plaintext is then encrypted via a standard Polybius Sqaure resulting from a pre-shared keyword. Digraph letters sharing the same row are replaced by the letters immediately to their right (with line wrap if required), letters sharing the same column are replaced by the letters immediately below them (with column wrap if required), and letters sharing neither a row or column are replaced by those at the intersection of their row with the other letter's column.
+					<br><br>
+					For example, the message "<a href="http://en.wikipedia.org/wiki/Charles_Wheatstone" target="_blank">Charles Wheatstone</a>" with the key "telegraph" would encrypt as follows:
+					<br><br>
+					Polybius square for keyword "telegraph":
+					<br><br>
+	    			<font class="w3-code-font">T E L G R
+	    			<br>
+	    			A P H B C 
+	    			<br>
+	    			D F I K M 
+	    			<br>
+	    			N O Q S U 
+	    			<br>
+	    			V W X Y Z
+	    			<br><br></font>
+	    			Processed plaintext message: 
+	    			<font class="w3-code-font">ch ar le sw he at st on ex
+					<br><br></font>
+					Encryption process:
+					<br><br>
+					<font class="w3-code-font">ch = share a row therefore = AB
+					<br>
+					ar = share neither a row or column therefore = CT
+					<br>
+					le = share a row therefore = GL
+					<br>
+					sw = share neither a row or column therefore = OY
+					<br>
+					he = share neither a row or column therefore = PL
+					<br>
+					at = share a column therefore = DA
+					<br>
+					st = share neither a row or column therefore = NG
+					<br>
+					on = share a row therefore = QO
+					<br>
+					ex = share neither a row or column therefore = LW
+					<br><br></font>
+	    			Ciphertext: 
+	    			<font class="w3-code-font">ABCTGLOYPLDANGQOLW
+					<br><br></font>
+	    			To recover the original message, the receiver reverses this process. The Playfair cipher is vulnerable to digraph frequency analysis.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

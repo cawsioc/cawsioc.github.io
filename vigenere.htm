@@ -1,0 +1,127 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="vigenere.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>proto.woolfox.net</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>Vigenere Cipher</h2>
+			</div>
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<h3>Encryption</h3>
+				</div>	
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="txboxin" class="w3-input" type="text" placeholder="String to encrypt">
+					</div>
+				</form>
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="ek" class="w3-input" type="text" placeholder="Key word or phrase">
+					</div>
+				</form>				
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="encrypt()">Encrypt
+					</button>
+				</div>						
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="txboxout" class="w3-input" type="text" placeholder="Cipher-text">
+					</div>
+				</form>
+				<br><br>
+			</div>
+
+			<div>
+				<div class="w3-container">
+					<h3>Decryption</h3>
+				</div>		
+				<form class="w3-container" method="post" id="decryptForm">
+					<div class="w3-container w3-full">
+						<input id="rxboxin" class="w3-input" type="text" placeholder="String to decrypt">
+					</div>
+				</form>
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="dk" class="w3-input" type="text" placeholder="Key word or phrase">
+					</div>
+				</form>				
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="decrypt()">Decrypt
+					</button>
+				</div>						
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="rxboxout" class="w3-input" type="text" placeholder="Plain-text">
+					</div>
+				</form>
+				<br>
+			</div>
+
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>					
+					The Vigenere cipher uses multiple ciphertext alphabets (polyalphabetic) rather than a single ciphertext alphabet (monalphabetic) and so differs from all the other cipher examples on this site. The significance of having multiple ciphertext alphabets to encode each plaintext letter is that the frequency of individual letters and by association, whole words is disguised and thus much less vulnerable to frequency and letter relationship/characterization analysis. The cipher works by using letters of a keyword in a cyclical fashion to select different <a href="caesarshift.htm">Caesar shifted</a> ciphertext alphabets to encrypt plaintext characters.
+				</p>
+				<p>
+					For example, if the keyword were "jake" and the message to encrypt were "meet at noon":
+				</p>
+				<p>
+					The "m" of "meet" would be encrypted as "V" because "m" is the 13th letter of the normal (plaintext) alphabet, and "V" is the 13th letter of the Caesar shift ciphertext alphabet beginning with "j".
+				</p>
+				<p>
+					<font class="w3-code-font">
+					plaintext: &nbsp;abcdefghijkl <b>m</b> nopqrstuvwxyz
+					<br>
+					ciphertext: JKLMNOPQRSTU <b>V</b> WXYZABCDEFGHI
+					</font>
+				</p>
+				<p>
+					The first "e" in "meet" would be encrypted as "E" because "e" is the 5th letter of the normal (plaintext) alphabet, and "E" is the 5th letter of the Caesar shift ciphertext alphabet beginning with "a" (i.e. unshifted).
+				</p>
+				<p>
+					<font class="w3-code-font">
+					plaintext: &nbsp;abcd <b>e</b> fghijklmnopqrstuvwxyz
+					<br>
+					ciphertext: ABCD <b>E</b> FGHIJKLMNOPQRSTUVWXYZ
+					</font>
+				</p>
+				<p>
+					The second "e" in "meet" would be encrypted as "O" because "e" is the 5th letter of the normal (plaintext) alphabet, and "O" is the 5th letter of the Caesar shift ciphertext alphabet beginning with "k".
+				</p>
+				<p>
+					<font class="w3-code-font">
+					plaintext: &nbsp;abcd <b>e</b> fghijklmnopqrstuvwxyz
+					<br>
+					ciphertext: KLMN <b>O</b> PQRSTUVWXYZABCDEFGHIJ
+					</font>
+				</p>
+				<p>
+					This process continues until all the letters of the keyword have been used, after which the next character in the message is encrypted against the first letter of the keyword again, as shown below:
+				</p>
+				<p>
+					<font class="w3-code-font">
+					keyword: &nbsp;&nbsp;&nbsp;jakejakeja
+					<br>
+					plaintext: &nbsp;meetatnoon
+					<br>
+					ciphertext: VEOXJTXSXN
+					</font>
+				</p>
+				<p>
+					Whilst the Vigenere cipher is significantly stronger than the basic monoalphabetic ciphers, it is likely that a sequence of plaintext characters will eventually be encrypted as the same sequence of ciphertext characters in longer messages, particularly if the keyword is short. By observing the distance between the two (or more) repeated ciphertext sequences it becomes possible to guess the length of the keyword, and once this is known, simple frequency analysis can be performed on the appropriate groups of letters in the ciphertext. For example, if the repeated sequence of ciphertext letters occurred 10 and 25 characters apart and these occurrences were not conincidence, then the keyword must be 5 characters long, and therefore frequency analysis could be performed on the 1st, 6th, 11th, 16th, etc. characters as a group, and similarly on the 2nd, 7th, 12th, 17th, etc. characters as a group, and so on. Alternatively testing short keys against the beginning of the ciphertext and looking for a recognizable output from decryption can potentially allow a longer keyword to be obtained gradually.			
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

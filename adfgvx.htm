@@ -1,0 +1,133 @@
+<!doctype html>
+
+<html>
+	<head>
+		<script type="text/javascript" src="adfgvx.js"></script>
+		<link rel="stylesheet" href="./proto.css">
+		<title>proto.woolfox.net</title>
+		<style>.w3-code-font { font-family: "Courier New", Courier, monospace }</style>
+	</head>
+
+	<body>	
+		<div class="w3-panel" id="content">
+
+			<div class="w3-container w3-light-grey">
+				<h2>ADFGVX Cipher</h2>
+			</div>
+
+			<div>
+				<br>
+				<div class="w3-container">
+					<h3>Encryption</h3>
+				</div>		
+				<form class="w3-container" method="post" id="encryptForm">
+					<div class="w3-container w3-full">
+						<input id="txboxin" class="w3-input" type="text" placeholder="String to encrypt">
+					</div>
+					<div class="w3-container w3-quarter">
+						<input id="ek1" class="w3-input" type="text" placeholder="Fractionation key-phrase (a-z,1-9)">
+					</div>
+					<div class="w3-container w3-quarter">
+						<input id="ek2" class="w3-input" type="text" placeholder="Transposition key-phrase (a-z)">
+					</div>
+				</form>
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="encrypt()">Encrypt
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="txboxout" class="w3-input" type="text" placeholder="Cipher-text">
+					</div>
+				</form>
+				<br><br>
+			</div>
+
+			<div>	
+				<div class="w3-container">
+					<h3>Decryption</h3>
+				</div>		
+				<form class="w3-container" method="post" id="decryptForm">
+					<div class="w3-container w3-full">
+						<input id="rxboxin" class="w3-input" type="text" placeholder="Text to decrypt">
+					</div>
+					<div class="w3-container w3-quarter">
+						<input id="dk1" class="w3-input" type="text" placeholder="Fractionation key-phrase (a-z,1-9)">
+					</div>
+					<div class="w3-container w3-quarter">
+						<input id="dk2" class="w3-input" type="text" placeholder="Transposition key-phrase (a-z)">
+					</div>
+				</form>
+				<div class="w3-panel">
+					<button class="w3-btn w3-dark-grey" id="cipherbutton" type="button" onclick="decrypt()">Decrypt
+					</button>
+				</div>
+				<form class="w3-container">
+					<div class="w3-container w3-full">
+						<input id="rxboxout" class="w3-input" type="text" placeholder="Plain-text">
+					</div>
+				</form>
+				<br>
+			</div>
+
+			<div class="w3-panel w3-light-grey">
+				<h2>How it works</h2>
+				<p>
+					The ADFGVX Cipher creates a ciphertext using pairs of letters (digraphs) that encode plaintext characters according to a Polybius-style 6x6 grid whose rows and columns are labelled ADFGVX rather than numerically. Having 36 slots in the grid allows for the full alphabet of 26 letters and the numbers 0 to 9. In this implementation the grid is populated like a Polybius Square by using a "fractionation" keyword. The resultant digraphs are then treated as a stream of single characters and written out under the letters of a second keyword. The final ciphertext is produced by transposing the columns of the digraph stream according to the column ordering produced by rearranging the transposition keyword's letters alphabetically.
+					<br><br>
+					For example, the message "<a href="http://en.wikipedia.org/wiki/Georges_Painvin" target="_blank">Georges Jean Painvin</a>" with the fractionation key "polyb1us" and the transposition key "scytale" would encrypt as follows:
+					<br><br>
+					Grid for keyword "p0lyb1us":
+					<br><br>
+	    			<font class="w3-code-font">P 0 L Y B 1
+	    			<br>
+	    			U S A C D E
+	    			<br>
+	    			F G H I J K
+	    			<br>
+	    			M N O Q R T
+	    			<br>
+	    			V W X Z 2 3
+	    			<br>
+	    			4 5 6 7 8 9
+	    			<br><br></font>
+	    			Processed plaintext message: 
+	    			<font class="w3-code-font">georgesjeanpainvin
+					<br><br></font>
+					Encryption process:
+					<br><br>
+					<font class="w3-code-font">g is on the "D" column in row "F" and so = DF
+					<br>
+					e is on the "X" column in row "D" and so = XD
+					<br>
+					o is on the "F" column in row "G" and so = FG
+					<br><br></font>
+					and so on, producing the digraph stream: <font class="w3-code-font">DFXDFGVGDFXDDDVFXDFDDGAAFDGFDGAVGFDG</font>
+					<br><br>
+					Digraph stream under transposition keyword:
+					<br><br>
+					<font class="w3-code-font">
+					S C Y T A L E
+					<br><br>
+					D F X D F G V
+					<br>
+					G D F X D D D
+					<br>
+					V F X D F D D
+					<br>
+					G A A F D G F
+					<br>
+					D G A V G F D
+					<br>
+					G
+					<br><br></font>
+	    			Ciphertext produced by reading columns in keyword alphabetic order: 
+	    			<font class="w3-code-font">ACELSTY 
+	    			<br><br>(col A) FDFDG (col C) FDFAG (col E) VDDFD (col L) GDDGF (col S) DGVGDG (col T) DXDFV (col Y) XFXAA
+					<br><br></font>
+	    			To recover the original message, the receiver reverses this process. The ADFGVX cipher is not vulnerable to basic frequency analysis techniques but is by no means secure by modern standards.
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
